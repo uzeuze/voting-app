@@ -34,3 +34,16 @@ exports.createPoll = (req, res) => {
     res.json(newPoll);
   });
 }
+
+
+exports.getPoll = (req, res) => {
+  let pollId = req.params.pollId;
+  Poll.findById(pollId, (err, poll) => {
+    if(err) { return res.status(404).send(err); }
+    if(poll) {
+      res.json(poll);
+    } else {
+      res.status(404).send('Invalid request');
+    }
+  });
+}

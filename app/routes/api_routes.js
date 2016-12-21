@@ -11,6 +11,7 @@ require('../services/passport');
 // Poll
 router.get('/polls', pollsController.getPolls);
 router.post('/polls', requireAuth, pollsController.createPoll);
+router.get('/polls/:pollId', pollsController.getPoll);
 
 // User
 router.get('/user/polls', requireAuth, usersController.getCurrentUserPolls);
