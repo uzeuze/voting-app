@@ -13,6 +13,9 @@ router.get('/polls', pollsController.getPolls);
 router.post('/polls', requireAuth, pollsController.createPoll);
 router.get('/polls/:pollId', pollsController.getPoll);
 router.post('/polls/:pollId', requireAuth, pollsController.votePoll);
+// Unauthorized client vote
+router.post('/unauth/polls/:pollId', pollsController.votePoll);
+router.delete('/polls/:pollId', requireAuth, pollsController.deletePoll);
 
 // User
 router.get('/user/polls', requireAuth, usersController.getCurrentUserPolls);

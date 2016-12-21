@@ -86,3 +86,18 @@ exports.votePoll = (req, res) => {
     });
   });
 }
+
+exports.deletePoll = (req, res) => {
+  let pollId = req.params.pollId;
+  Poll.findOne({ slug: pollId }, (err, poll) => {
+    if(err) { throw new Error(err); }
+    // Return error if user is not the creator of the poll
+    if(poll.creator !== req.user.email) {
+      return res.status(404).send('You are not authorized to delete this poll')
+    }
+    poll.remove((err) => {
+      if(err) { throw new Error(err); }
+      res.send('Poll deleted');
+    });
+  });
+}
