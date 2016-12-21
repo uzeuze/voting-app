@@ -1,5 +1,16 @@
 const Poll = require('../models/poll');
 
+exports.getPolls = (req, res) => {
+  Poll.find({}, (err, polls) => {
+    if(err) { return res.status(404).send(err); }
+    if(polls && polls.length) {
+      res.json(polls);
+    } else {
+      res.status(404).send('Invalid Request');
+    }
+  });
+}
+
 exports.createPoll = (req, res) => {
   let question = req.body.question;
 
