@@ -1,0 +1,25 @@
+{
+  "name": "voting_app_21122016",
+  "version": "1.0.0",
+  "description": "Voting App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "author": "Egemen Can Uze",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "helmet": "^3.1.0",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "^4.7.4",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0"
+  }
+}
