@@ -4,7 +4,8 @@
   "description": "Voting App",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'"
   },
   "author": "Egemen Can Uze",
   "license": "ISC",
@@ -22,5 +23,10 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
   }
 }
