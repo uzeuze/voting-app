@@ -140,4 +140,52 @@ describe('Polls Controller', () => {
           });
       });
   });
+
+  it('Authorized user can not vote on same poll more than one time', done => {
+    request(app)
+      .post('/api/signup')
+      .send({
+        email: 'test@example.com',
+        password: '123456'
+      })
+      .end((error, response) =>{
+        request(app)
+          .post('/api/polls/what-is-your-favourite-color')
+          .set({ "Authorization": response.body.token })
+          .send({
+            "option": { "id": "0" }
+          })
+          .end(() => {
+            request(app)
+              .post('/api/polls/what-is-your-favourite-color')
+              .set({ "Authorization": response.body.token })
+              .send({
+                "option": { "id": "0" }
+              })
+              .end((err, res) => {
+                assert(res.body.error === 'You have already voted');
+                done();
+              });
+          });
+      });
+  });
+
+  it('Unauthorized user can not vote on same poll more than one time', done => {
+    request(app)
+      .post('/api/unauth/polls/what-is-your-favourite-color')
+      .send({
+        "option": { "id": "0" }
+      })
+      .end((err, res) => {
+        request(app)
+          .post('/api/unauth/polls/what-is-your-favourite-color')
+          .send({
+            "option": { "id": "1" }
+          })
+          .end((err, res) => {
+            assert(res.body.error === 'You have already voted');
+            done();
+          });
+      });
+  });
 });
