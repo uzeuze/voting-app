@@ -9,6 +9,7 @@ import App from './components/App';
 import Welcome from './components/Welcome';
 import Dashboard from './components/Dashboard';
 import SignOut from './components/SignOut';
+import Poll from './components/Poll';
 import RequireAuth from './components/RequireAuth';
 
 import reducers from './reducers';
@@ -30,6 +31,7 @@ render(
         <IndexRoute component={Welcome} />
         <Route path="dashboard" component={RequireAuth(Dashboard)} />
         <Route path="signout" component={SignOut} />
+        <Route path="/polls/:pollId" component={Poll} />
       </Route>
     </Router>
   </Provider>,

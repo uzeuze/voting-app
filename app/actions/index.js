@@ -7,7 +7,10 @@ import {
   UNAUTH_USER,
   CLEAR_AUTH_ERROR,
   AUTH_MODAL,
-  HIDE_AUTH_MODAL
+  HIDE_AUTH_MODAL,
+  FETCH_ALL_POLLS,
+  FETCH_POLL,
+  CLEAR_POLL
 } from './types';
 
 const API_URL = 'http://localhost:3000/api';
@@ -66,4 +69,32 @@ export function showAuthModal(modalName) {
 
 export function hideAuthModal() {
   return { type: HIDE_AUTH_MODAL };
+}
+
+export function fetchPoll(pollId) {
+  return function (dispatch) {
+    axios.get(`${API_URL}/polls/${pollId}`)
+      .then(response => {
+        dispatch({
+          type: FETCH_POLL,
+          payload: response.data
+        });
+      });
+  };
+}
+
+export function clearPoll() {
+  return { type: CLEAR_POLL };
+}
+
+export function fetchAllPolls() {
+  return function (dispatch) {
+    axios.get(`${API_URL}/polls`)
+      .then(response => {
+        dispatch({
+          type: FETCH_ALL_POLLS,
+          payload: response.data
+        });
+      });
+  };
 }
