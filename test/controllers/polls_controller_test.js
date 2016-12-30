@@ -49,16 +49,16 @@ describe('Polls Controller', () => {
         email: 'test@example.com',
         password: '123456'
       })
-      .end((error, response) =>{
+      .end((error, response) => {
         request(app)
           .post('/api/polls')
-          .set({ "Authorization": response.body.token })
+          .set({ 'Authorization': response.body.token })
           .send({
-            "question": "Who will win?",
-          	"options": ["superman", "batman"]
+            question: 'Who will win?',
+            options: ['superman', 'batman']
           })
           .end((err, res) => {
-            assert(res.body.question === "Who will win?");
+            assert(res.body.question === 'Who will win?');
             done();
           });
       });
@@ -130,9 +130,9 @@ describe('Polls Controller', () => {
       .end((error, response) =>{
         request(app)
           .delete('/api/polls/what-is-your-favourite-color')
-          .set({ "Authorization": response.body.token })
+          .set({ Authorization: response.body.token })
           .end(() => {
-            Poll.findOne({ slug: 'what-is-your-favourite-color'})
+            Poll.findOne({ slug: 'what-is-your-favourite-color' })
               .then((poll) => {
                 assert(poll === null);
                 done();
@@ -148,19 +148,19 @@ describe('Polls Controller', () => {
         email: 'test@example.com',
         password: '123456'
       })
-      .end((error, response) =>{
+      .end((error, response) => {
         request(app)
           .post('/api/polls/what-is-your-favourite-color')
-          .set({ "Authorization": response.body.token })
+          .set({ Authorization: response.body.token })
           .send({
-            "option": { "id": "0" }
+            option: { id: '0' }
           })
           .end(() => {
             request(app)
               .post('/api/polls/what-is-your-favourite-color')
-              .set({ "Authorization": response.body.token })
+              .set({ Authorization: response.body.token })
               .send({
-                "option": { "id": "0" }
+                option: { id: '0' }
               })
               .end((err, res) => {
                 assert(res.body.error === 'You have already voted');
@@ -174,13 +174,13 @@ describe('Polls Controller', () => {
     request(app)
       .post('/api/unauth/polls/what-is-your-favourite-color')
       .send({
-        "option": { "id": "0" }
+        option: { id: '0' }
       })
       .end((err, res) => {
         request(app)
           .post('/api/unauth/polls/what-is-your-favourite-color')
           .send({
-            "option": { "id": "1" }
+            option: { id: '1' }
           })
           .end((err, res) => {
             assert(res.body.error === 'You have already voted');

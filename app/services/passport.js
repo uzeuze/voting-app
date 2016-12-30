@@ -9,13 +9,13 @@ const localOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
   // Verify email
   User.findOne({ email }, (err, user) => {
-    if(err) { return done(err); }
-    if(!user) { return done(null, false); }
+    if (err) { return done(err); }
+    if (!user) { return done(null, false); }
 
     // Verify password
-    user.comparePassword(password, (err, isMatch) => {
-      if(err) { return done(err); }
-      if(!isMatch) { return done(null, false); }
+    user.comparePassword(password, (error, isMatch) => {
+      if (error) { return done(error); }
+      if (!isMatch) { return done(null, false); }
 
       return done(null, user);
     });
@@ -31,9 +31,9 @@ const jwtOptions = {
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
   // Check if user ID in the payload exists in database
   User.findById(payload.sub, (err, user) => {
-    if(err) { return done(err); }
+    if (err) { return done(err); }
 
-    if(user) {
+    if (user) {
       done(null, user);
     } else {
       done(null, false);

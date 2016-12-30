@@ -1,6 +1,6 @@
 // Catches uncaught exceptions and prevents app crashes
-process.on('uncaughtException', function (err) {
-  console.error(err.stack || err)
+process.on('uncaughtException', (err) => {
+  console.error(err.stack || err);
 });
 
 const express = require('express');
@@ -17,12 +17,12 @@ const apiRoutes = require('./app/routes/api_routes');
 
 // DB Setup
 mongoose.Promise = global.Promise;
-if(process.env.NODE_ENV !== 'test') {
-  const db_url = process.env.MONGOLAB_URI || "mongodb://localhost:27017/voting-app-211216";
-  mongoose.connect(db_url);
+if (process.env.NODE_ENV !== 'test') {
+  const dbUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/voting-app-211216';
+  mongoose.connect(dbUrl);
   const db = mongoose.connection;
   db.on('error', (err) => {
-    throw new Error(err);
+    console.error('Error', err);
     process.exit(1);
   });
   db.once('open', () => {

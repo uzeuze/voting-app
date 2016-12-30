@@ -14,8 +14,8 @@ describe('Users controller', () => {
         email: 'test@example.com',
         password: '123456'
       })
-      .end((error, response) =>{
-        testPoll = new Poll({
+      .end((error, response) => {
+        const testPoll = new Poll({
           question: 'What is your favourite color?',
           options: [
             { optionId: 0, text: 'red' },
@@ -28,7 +28,7 @@ describe('Users controller', () => {
           .then(() => {
             request(app)
               .get('/api/user/polls')
-              .set({ "Authorization": response.body.token })
+              .set({ Authorization: response.body.token })
               .end((err, res) => {
                 assert(res.body.length === 1);
                 done();

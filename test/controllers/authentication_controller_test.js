@@ -13,7 +13,7 @@ describe('Authentication controller', () => {
         email: 'test@example.com',
         password: '123456'
       })
-      .end((err, response) =>{
+      .end((err, response) => {
         assert(response.body.token !== undefined);
         done();
       });
