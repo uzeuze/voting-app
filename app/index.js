@@ -9,6 +9,7 @@ import App from './components/App';
 import Welcome from './components/Welcome';
 import Dashboard from './components/Dashboard';
 import SignOut from './components/SignOut';
+import RequireAuth from './components/RequireAuth';
 
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
@@ -27,7 +28,7 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Welcome} />
-        <Route path="dashboard" component={Dashboard} />
+        <Route path="dashboard" component={RequireAuth(Dashboard)} />
         <Route path="signout" component={SignOut} />
       </Route>
     </Router>
