@@ -40,12 +40,14 @@ app.use(bodyParser.json({ type: '*/*' }));
 // that set HTTP headers to secure Express apps
 app.use(helmet());
 // Static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname, 'public')));
+// Bootstrap files
+app.use(express.static(path.resolve(__dirname, 'node_modules/bootstrap/dist')));
 
 app.use('/api', apiRoutes);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.resolve(__dirname, 'public/index.html'));
 });
 
 module.exports = app;
