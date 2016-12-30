@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 
 import AuthModal from './AuthModal';
+import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
 
 class Header extends Component {
   constructor() {
@@ -44,18 +46,22 @@ class Header extends Component {
         <AuthModal
           onHide={this.handleModalHide}
           show={this.state.modal === 'login'}
-          title="Login"
+          modal="login"
           handleModalChange={this.handleModalChange}
-        />
+        >
+          <LoginForm />
+        </AuthModal>
       );
     } else if (this.state.modal === 'signUp') {
       return (
         <AuthModal
           onHide={this.handleModalHide}
           show={this.state.modal === 'signUp'}
-          title="Sign Up"
+          modal="signUp"
           handleModalChange={this.handleModalChange}
-        />
+        >
+          <SignUpForm />
+        </AuthModal>
       );
     }
   }

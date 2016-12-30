@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 export default class AuthModal extends Component {
   render() {
+    let title;
+    let linkText;
+
+    if (this.props.modal === 'login') {
+      title = 'Log In';
+      linkText = 'Don\'t have an account? Register.';
+    } else if (this.props.modal === 'signUp') {
+      title = 'Let\'s get started';
+      linkText = 'Already have an account? Login.';
+    }
+
     return (
       <Modal
         show={this.props.show}
@@ -11,12 +22,12 @@ export default class AuthModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title className="text-center">
-            {this.props.title}
+            {title}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          TEST
-          <a onClick={this.props.handleModalChange}>Change Modal</a>
+          {this.props.children}
+          <a onClick={this.props.handleModalChange}>{linkText}</a>
         </Modal.Body>
       </Modal>
     );
