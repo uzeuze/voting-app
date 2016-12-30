@@ -5,7 +5,9 @@ import {
   AUTH_ERROR,
   AUTH_FORM_LOADING,
   UNAUTH_USER,
-  CLEAR_AUTH_ERROR
+  CLEAR_AUTH_ERROR,
+  AUTH_MODAL,
+  HIDE_AUTH_MODAL
 } from './types';
 
 const API_URL = 'http://localhost:3000/api';
@@ -56,4 +58,12 @@ export function signOutUser() {
 
 export function clearAuthError() {
   return { type: CLEAR_AUTH_ERROR };
+}
+
+export function showAuthModal(modalName) {
+  return { type: AUTH_MODAL, payload: modalName };
+}
+
+export function hideAuthModal() {
+  return { type: HIDE_AUTH_MODAL };
 }
