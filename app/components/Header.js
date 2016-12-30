@@ -13,6 +13,7 @@ class Header extends Component {
     this.showLoginModal = this.showLoginModal.bind(this);
     this.showSignUpModal = this.showSignUpModal.bind(this);
     this.handleModalHide = this.handleModalHide.bind(this);
+    this.handleModalChange = this.handleModalChange.bind(this);
   }
 
   showLoginModal() {
@@ -29,6 +30,14 @@ class Header extends Component {
     this.setState({ modal: null });
   }
 
+  handleModalChange() {
+    if (this.state.modal === 'login') {
+      this.setState({ modal: 'signUp' });
+    } else if (this.state.modal === 'signUp') {
+      this.setState({ modal: 'login' });
+    }
+  }
+
   renderAuthModal() {
     if (this.state.modal === 'login') {
       return (
@@ -36,6 +45,7 @@ class Header extends Component {
           onHide={this.handleModalHide}
           show={this.state.modal === 'login'}
           title="Login"
+          handleModalChange={this.handleModalChange}
         />
       );
     } else if (this.state.modal === 'signUp') {
@@ -44,6 +54,7 @@ class Header extends Component {
           onHide={this.handleModalHide}
           show={this.state.modal === 'signUp'}
           title="Sign Up"
+          handleModalChange={this.handleModalChange}
         />
       );
     }

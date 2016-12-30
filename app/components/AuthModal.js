@@ -16,10 +16,8 @@ export default class AuthModal extends Component {
         </Modal.Header>
         <Modal.Body>
           TEST
+          <a onClick={this.props.handleModalChange}>Change Modal</a>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
-        </Modal.Footer>
       </Modal>
     );
   }
