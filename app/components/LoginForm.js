@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import { loginUser, clearAuthError } from '../actions';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div className="form-group">
@@ -9,9 +11,22 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 );
 
 class LoginForm extends Component {
+  componentWillMount() {
+    this.props.clearAuthError();
+  }
 
   handleFormSubmit({ email, password }) {
-    console.log(email, password);
+    this.props.loginUser({ email, password });
+  }
+
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
   }
 
   render() {
@@ -21,6 +36,7 @@ class LoginForm extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <Field name="email" type="text" component={renderField} label="Email" />
         <Field name="password" type="password" component={renderField} label="Password" />
+        {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Log In</button>
       </form>
     );
@@ -45,7 +61,13 @@ const validate = (formProps) => {
   return errors;
 };
 
-export default reduxForm({
+const mapStateToProps = (state) => {
+  return {
+    errorMessage: state.auth.error
+  };
+};
+
+export default connect(mapStateToProps, { loginUser, clearAuthError })(reduxForm({
   form: 'login',
   validate
-})(LoginForm);
+})(LoginForm));

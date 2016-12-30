@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { connect } from 'react-redux';
 
 import AuthModal from './AuthModal';
 import LoginForm from './LoginForm';
@@ -16,6 +18,12 @@ class Header extends Component {
     this.showSignUpModal = this.showSignUpModal.bind(this);
     this.handleModalHide = this.handleModalHide.bind(this);
     this.handleModalChange = this.handleModalChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.authenticated) {
+      this.handleModalHide();
+    }
   }
 
   showLoginModal() {
@@ -66,6 +74,35 @@ class Header extends Component {
     }
   }
 
+  renderNavLinks() {
+    if (this.props.authenticated) {
+      return (
+        <Nav pullRight>
+          <LinkContainer to='/signout'>
+            <NavItem eventKey={1}>Sign Out</NavItem>
+          </LinkContainer>
+        </Nav>
+      );
+    }
+
+    return (
+      <Nav pullRight>
+      <NavItem
+        eventKey={1}
+        onClick={this.showSignUpModal}
+      >
+        Sign Up
+      </NavItem>
+      <NavItem
+        eventKey={2}
+        onClick={this.showLoginModal}
+      >
+        Login
+      </NavItem>
+      </Nav>
+    );
+  }
+
   render() {
     return (
       <div>
@@ -77,20 +114,7 @@ class Header extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav pullRight>
-              <NavItem
-                eventKey={1}
-                onClick={this.showSignUpModal}
-              >
-                Sign Up
-              </NavItem>
-              <NavItem
-                eventKey={2}
-                onClick={this.showLoginModal}
-              >
-                Login
-              </NavItem>
-            </Nav>
+            {this.renderNavLinks()}
           </Navbar.Collapse>
         </Navbar>
         {this.renderAuthModal()}
@@ -99,4 +123,10 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.auth.authenticated
+  };
+};
+
+export default connect(mapStateToProps)(Header);

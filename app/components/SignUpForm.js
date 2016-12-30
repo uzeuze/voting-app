@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import { signUpUser, clearAuthError } from '../actions';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div className="form-group">
@@ -9,8 +11,22 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 );
 
 class SignUpForm extends Component {
+  componentWillMount() {
+    this.props.clearAuthError();
+  }
+
   handleFormSubmit({ email, password }) {
-    console.log(email, password);
+    this.props.signUpUser({ email, password });
+  }
+
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
   }
 
   render() {
@@ -36,6 +52,7 @@ class SignUpForm extends Component {
           component={renderField}
           label="Password Confirmation"
         />
+        {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign Up</button>
       </form>
     );
@@ -68,7 +85,13 @@ const validate = (formProps) => {
   return errors;
 };
 
-export default reduxForm({
+const mapStateToProps = (state) => {
+  return {
+    errorMessage: state.auth.error
+  };
+};
+
+export default connect(mapStateToProps, { signUpUser, clearAuthError })(reduxForm({
   form: 'signUp',
   validate
-})(SignUpForm);
+})(SignUpForm));
