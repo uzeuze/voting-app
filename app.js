@@ -39,7 +39,13 @@ app.use(bodyParser.json({ type: '*/*' }));
 // Helmet is a collection of 11 smaller middleware functions
 // that set HTTP headers to secure Express apps
 app.use(helmet());
+// Static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', apiRoutes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 module.exports = app;
