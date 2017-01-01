@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { showAuthModal } from '../actions';
 import PollList from './PollList';
+import Poll from './Poll';
 
 class Welcome extends Component {
   showSignUpModal() {
@@ -29,6 +30,7 @@ class Welcome extends Component {
             <div className="Welcome__featured_poll_container">
               <h4 className="text-center Welcome__featured_poll_title">Featured Poll</h4>
               <div className="Welcome__featured_poll">
+                <Poll featured />
               </div>
             </div>
           </div>

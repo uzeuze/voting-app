@@ -7,7 +7,8 @@ import { Button, Grid, Row, Col } from 'react-bootstrap';
 import { Chart } from 'react-google-charts';
 import {
   fetchPoll,
-  clearPoll
+  clearPoll,
+  fetchFeaturedPoll
 } from '../actions';
 
 class Poll extends Component {
@@ -22,7 +23,11 @@ class Poll extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPoll(this.props.params.pollId);
+    if (this.props.featured) {
+      this.props.fetchFeaturedPoll();
+    } else {
+      this.props.fetchPoll(this.props.params.pollId);
+    }
   }
 
   componentWillUnmount() {
@@ -31,7 +36,7 @@ class Poll extends Component {
 
   handleFormSubmit({ option, addOption }) {
     const answer = {};
-    const { pollId } = this.props.params;
+    const pollId = this.props.poll.slug;
     let url;
 
     if (addOption) {
@@ -114,8 +119,14 @@ class Poll extends Component {
     const options = poll.options.map((option) => {
       return (
         <div key={option.optionId}>
-          <Field name="option" component="input" type="radio" value={`${option.optionId}`} />
-          { `${option.text}  -  ${option.voteCount}` }
+          <Field
+            name="option"
+            component="input"
+            type="radio"
+            value={`${option.optionId}`}
+            className="Poll__options"
+          />
+          { option.text }
         </div>
       );
     });
@@ -123,10 +134,10 @@ class Poll extends Component {
     return (
       <Grid>
         <Row className="show-grid">
-          <Col sm={6}>
-            <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <Col sm={!this.props.featured ? 6 : 12}>
+            <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="Poll__form">
               <div>
-                <h1>{poll.question}</h1>
+                <h3 className="Poll__question">{poll.question}</h3>
                 {options}
                 {this.renderAddOption()}
               </div>
@@ -134,15 +145,19 @@ class Poll extends Component {
               <Button className="Poll__button" type="submit">VOTE</Button>
             </form>
           </Col>
-          <Col sm={6}>
-            <Chart
-              chartType="PieChart"
-              data={pollData}
-              options={{ 'is3D': true }}
-              width="100%"
-              legend_toggle
-            />
-          </Col>
+          { !this.props.featured ?
+            <Col sm={6}>
+              <Chart
+                chartType="PieChart"
+                data={pollData}
+                options={{ 'is3D': true }}
+                width="100%"
+                legend_toggle
+              />
+            </Col>
+            :
+            null
+          }
         </Row>
       </Grid>
     );
@@ -156,6 +171,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchPoll, clearPoll })(reduxForm({
+export default connect(mapStateToProps, { fetchPoll, clearPoll, fetchFeaturedPoll })(reduxForm({
   form: 'vote_poll'
 })(Poll));

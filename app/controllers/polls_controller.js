@@ -101,3 +101,14 @@ exports.deletePoll = (req, res) => {
     });
   });
 };
+
+// Returns oldest record
+exports.getFeaturedPoll = (req, res) => {
+  Poll.findOne({}, {}, { sort: { created_at: -1 } })
+    .then(poll => {
+      res.json(poll);
+    })
+    .catch(err => {
+      throw new Error(err);
+    });
+};

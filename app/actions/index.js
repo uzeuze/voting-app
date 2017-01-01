@@ -120,3 +120,15 @@ export function fetchUserPolls() {
     });
   };
 }
+
+export function fetchFeaturedPoll() {
+  return function (dispatch) {
+    axios.get(`${API_URL}/polls/featured`)
+      .then(response => {
+        dispatch({
+          type: FETCH_POLL,
+          payload: response.data
+        });
+      });
+  };
+}
