@@ -60595,7 +60595,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);", ""]);
 
 	// module
-	exports.push([module.id, "body {\n  font-family: 'Roboto', sans-serif; }\n\n.error {\n  color: red; }\n\n.Header {\n  margin: 0;\n  background-color: #296553;\n  border: 0;\n  border-radius: 0; }\n  .Header a {\n    color: #fff !important; }\n\n.Welcome .Welcome__hero {\n  margin: 0;\n  background-image: url(\"/images/welcome_hero.jpg\");\n  background-size: cover;\n  min-height: 400px; }\n\n.Welcome .Welcome__hero_overlay {\n  padding-top: 50px;\n  width: 100%;\n  height: 100%;\n  background: rgba(96, 125, 139, 0.7);\n  min-height: 400px; }\n\n.Welcome .Welcome_hero_main_info {\n  color: #fff; }\n\n.Welcome .Welcome__hero_title {\n  margin-top: 0;\n  font-weight: bold; }\n\n.Welcome .Welcome__hero_subtitle {\n  font-size: 15px; }\n\n.Welcome .Welcome__hero_button {\n  background-color: #f44336;\n  color: #fff;\n  border-radius: 0;\n  border: 0;\n  padding: 14px 42px;\n  font-size: 16px; }\n\n.Welcome .Welcome__featured_poll_container {\n  max-width: 400px;\n  margin: 65px auto 30px auto; }\n  .Welcome .Welcome__featured_poll_container .container {\n    max-width: 400px; }\n  .Welcome .Welcome__featured_poll_container .Welcome__featured_poll_title {\n    color: #fff;\n    margin-bottom: 0; }\n  .Welcome .Welcome__featured_poll_container .Poll__form {\n    background-color: #fff; }\n  .Welcome .Welcome__featured_poll_container .Poll__question {\n    background-color: #296553;\n    color: #fff;\n    margin-bottom: 0;\n    padding: 15px 0 15px 10px;\n    font-size: 16px; }\n  .Welcome .Welcome__featured_poll_container .Poll__options {\n    margin: 10px; }\n  .Welcome .Welcome__featured_poll_container .Poll__button {\n    width: 100%;\n    background-color: rgba(158, 158, 158, 0.9);\n    color: #fff;\n    font-size: 16px;\n    border-radius: 0;\n    border: 0; }\n\n.Welcome .PollList__list {\n  list-style-type: none;\n  padding: 0; }\n\n.Welcome .PollList__list_item {\n  cursor: pointer; }\n\n.Poll .Poll__options {\n  margin: 10px; }\n\n.Poll .SocialMediaShareButton {\n  width: 40px;\n  margin-top: 10px; }\n\n.Button_new_poll {\n  width: 50px;\n  height: 50px;\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  background-color: red;\n  color: #fff;\n  font-size: 24px;\n  border-radius: 50%; }\n  .Button_new_poll .glyphicon {\n    top: 4px;\n    right: -2px; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: 'Roboto', sans-serif; }\n\n.error {\n  color: red; }\n\n.Header {\n  margin: 0;\n  background-color: #296553;\n  border: 0;\n  border-radius: 0; }\n  .Header a {\n    color: #fff !important; }\n\n.Welcome .Welcome__hero {\n  margin: 0;\n  background-image: url(\"/images/welcome_hero.jpg\");\n  background-size: cover;\n  min-height: 400px; }\n\n.Welcome .Welcome__hero_overlay {\n  padding-top: 50px;\n  width: 100%;\n  height: 100%;\n  background: rgba(96, 125, 139, 0.7);\n  min-height: 400px; }\n\n.Welcome .Welcome_hero_main_info {\n  color: #fff; }\n\n.Welcome .Welcome__hero_title {\n  margin-top: 0;\n  font-weight: bold; }\n\n.Welcome .Welcome__hero_subtitle {\n  font-size: 15px; }\n\n.Welcome .Welcome__hero_button {\n  background-color: #f44336;\n  color: #fff;\n  border-radius: 0;\n  border: 0;\n  padding: 14px 42px;\n  font-size: 16px; }\n\n.Welcome .Welcome__featured_poll_container {\n  max-width: 400px;\n  margin: 65px auto 30px auto; }\n  .Welcome .Welcome__featured_poll_container .container {\n    max-width: 400px; }\n  .Welcome .Welcome__featured_poll_container .Welcome__featured_poll_title {\n    color: #fff;\n    margin-bottom: 0; }\n  .Welcome .Welcome__featured_poll_container .Poll__form {\n    background-color: #fff; }\n  .Welcome .Welcome__featured_poll_container .Poll__question {\n    background-color: #296553;\n    color: #fff;\n    margin-bottom: 0;\n    padding: 15px 0 15px 10px;\n    font-size: 16px; }\n  .Welcome .Welcome__featured_poll_container .Poll__options {\n    margin: 10px; }\n  .Welcome .Welcome__featured_poll_container .Poll__button {\n    width: 100%;\n    background-color: rgba(158, 158, 158, 0.9);\n    color: #fff;\n    font-size: 16px;\n    border-radius: 0;\n    border: 0; }\n\n.Welcome .PollList__list {\n  list-style-type: none;\n  padding: 0; }\n\n.Welcome .PollList__list_item {\n  cursor: pointer; }\n\n.Poll .Poll__options {\n  margin: 10px; }\n\n.Poll .SocialMediaShareButton {\n  width: 40px;\n  margin-top: 10px; }\n\n.Button_new_poll {\n  width: 50px;\n  height: 50px;\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  background-color: red;\n  color: #fff;\n  font-size: 24px;\n  border-radius: 50%; }\n  .Button_new_poll .glyphicon {\n    top: 4px;\n    right: -2px; }\n\n.NewPoll .NewPoll__form {\n  margin-top: 50px;\n  margin-bottom: 20px; }\n\n.NewPoll .NewPoll__form_options {\n  height: 200px;\n  overflow-y: scroll; }\n", ""]);
 
 	// exports
 
@@ -73846,6 +73846,10 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
 	var _config = __webpack_require__(299);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -73896,6 +73900,11 @@
 	  }
 
 	  _createClass(NewPoll, [{
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      this.node.scrollIntoView();
+	    }
+	  }, {
 	    key: 'handleAddOption',
 	    value: function handleAddOption() {
 	      this.setState({ optionCount: this.state.optionCount + 1 });
@@ -73922,6 +73931,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var handleSubmit = this.props.handleSubmit;
 
 	      var options = [];
@@ -73938,17 +73949,24 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'NewPoll container' },
 	        _react2.default.createElement(
 	          'form',
-	          { onSubmit: handleSubmit(this.handleFormSubmit.bind(this)) },
+	          { className: 'NewPoll__form', onSubmit: handleSubmit(this.handleFormSubmit.bind(this)) },
 	          _react2.default.createElement(_reduxForm.Field, {
 	            name: 'question',
 	            type: 'text',
 	            component: renderField,
 	            label: 'Question'
 	          }),
-	          options,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'NewPoll__form_options' },
+	            options,
+	            _react2.default.createElement('div', { ref: function ref(node) {
+	                return _this2.node = node;
+	              } })
+	          ),
 	          _react2.default.createElement(
 	            'button',
 	            { action: 'submit', className: 'btn btn-primary' },
@@ -73957,7 +73975,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.handleAddOption },
+	          { className: 'btn btn-warning', onClick: this.handleAddOption },
 	          'Add New Option'
 	        )
 	      );

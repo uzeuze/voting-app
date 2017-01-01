@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
+import ReactDOM from 'react-dom';
 import { API_URL } from '../../config';
 
 const renderField = ({ input, label, type, key, meta: { touched, error } }) => (
@@ -20,6 +21,10 @@ class NewPoll extends Component {
       optionCount: 4
     };
     this.handleAddOption = this.handleAddOption.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.node.scrollIntoView();
   }
 
   handleAddOption() {
@@ -62,18 +67,21 @@ class NewPoll extends Component {
     }
 
     return (
-      <div>
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <div className="NewPoll container">
+        <form className="NewPoll__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <Field
             name="question"
             type="text"
             component={renderField}
             label="Question"
           />
-          {options}
+          <div className="NewPoll__form_options">
+            {options}
+            <div ref={node => this.node = node} />
+          </div>
           <button action="submit" className="btn btn-primary">Create Poll</button>
         </form>
-        <button onClick={this.handleAddOption}>Add New Option</button>
+        <button className="btn btn-warning" onClick={this.handleAddOption}>Add New Option</button>
       </div>
     );
   }

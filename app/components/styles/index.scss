@@ -130,3 +130,15 @@ body {
     right: -2px;
   }
 }
+
+.NewPoll {
+  .NewPoll__form {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .NewPoll__form_options{
+    height: 200px;
+    overflow-y: scroll;
+  }
+}
