@@ -10,6 +10,7 @@ import {
   clearPoll,
   fetchFeaturedPoll
 } from '../actions';
+import { API_URL } from '../../config';
 
 class Poll extends Component {
   constructor() {
@@ -46,9 +47,9 @@ class Poll extends Component {
     }
 
     if (!this.props.authenticated) {
-      url = `http://localhost:3000/api/unauth/polls/${pollId}`;
+      url = `${API_URL}/unauth/polls/${pollId}`;
     } else {
-      url = `http://localhost:3000/api/polls/${pollId}`;
+      url = `${API_URL}/polls/${pollId}`;
     }
 
     const config = {

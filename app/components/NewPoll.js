@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
+import { API_URL } from '../../config';
 
 const renderField = ({ input, label, type, key, meta: { touched, error } }) => (
   <div className="form-group" key={key}>
@@ -36,7 +37,7 @@ class NewPoll extends Component {
       }
     }
 
-    axios.post('http://localhost:3000/api/polls', { question, options }, {
+    axios.post(`${API_URL}/polls`, { question, options }, {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(() => {

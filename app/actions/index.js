@@ -14,7 +14,7 @@ import {
   CLEAR_POLL
 } from './types';
 
-const API_URL = 'http://localhost:3000/api';
+import { API_URL } from '../../config';
 
 export function loginUser({ email, password }) {
   return function (dispatch) {

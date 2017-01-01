@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import axios from 'axios';
 import { fetchUserPolls } from '../actions';
+import { API_URL } from '../../config';
 
 class Dashboard extends Component {
   componentWillMount() {
@@ -10,7 +11,7 @@ class Dashboard extends Component {
   }
 
   onDeletePoll(pollId) {
-    axios.delete(`http://localhost:3000/api/polls/${pollId}`,
+    axios.delete(`${API_URL}/polls/${pollId}`,
       {
         headers: { authorization: localStorage.getItem('token') }
       }
