@@ -10,7 +10,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
-require('dotenv').config();
 
 const app = express();
 const apiRoutes = require('./app/routes/api_routes');
