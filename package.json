@@ -53,5 +53,8 @@
     "style-loader": "^0.13.1",
     "supertest": "^2.0.1",
     "webpack": "^1.14.0"
-  }
+  },
+ "engines": {
+   "node": "7.3.x"
+ }
 }
