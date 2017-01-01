@@ -34,7 +34,7 @@ class LoginForm extends Component {
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <Field name="email" type="text" component={renderField} label="Email" />
+        <Field name="email" type="email" component={renderField} label="Email" />
         <Field name="password" type="password" component={renderField} label="Password" />
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Log In</button>

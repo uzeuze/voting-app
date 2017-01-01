@@ -23,10 +23,10 @@ class Dashboard extends Component {
   renderPolls() {
     const polls = this.props.userPolls.map((poll) => {
       return (
-        <li key={poll._id}>
+        <li key={poll._id} className="Poll__item">
           <Link to={`/polls/${poll.slug}`}>{poll.question}</Link>
           {'  '}
-          <a onClick={this.onDeletePoll.bind(this, poll.slug)}>Delete</a>
+          <a className="btn btn-danger" onClick={this.onDeletePoll.bind(this, poll.slug)}>Delete</a>
         </li>
       );
     });
@@ -47,9 +47,13 @@ class Dashboard extends Component {
 
     return (
       <div>
+        <h2 className="text-center">My Polls</h2>
         <ul>
           {this.renderPolls()}
         </ul>
+        <Link to="/new-poll" className="Button_new_poll btn">
+          <span className="glyphicon glyphicon-plus" aria-hidden="true" />
+        </Link>
       </div>
     );
   }

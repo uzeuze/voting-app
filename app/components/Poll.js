@@ -134,7 +134,7 @@ class Poll extends Component {
     });
 
     return (
-      <Grid>
+      <Grid className="Poll">
         <Row className="show-grid">
           <Col sm={!this.props.featured ? 6 : 12}>
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="Poll__form">

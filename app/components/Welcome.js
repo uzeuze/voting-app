@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 import { showAuthModal } from '../actions';
 import PollList from './PollList';
 import Poll from './Poll';
@@ -49,8 +50,19 @@ class Welcome extends Component {
         </div>
         <div className="text-center">
           <h2>ALL POLLS</h2>
-          <PollList />
+          <div className="container">
+            <PollList />
+          </div>
         </div>
+        { this.props.authenticated ?
+          <Link to="/new-poll" className="Button_new_poll btn">
+            <span className="glyphicon glyphicon-plus" aria-hidden="true" />
+          </Link>
+          :
+          <a onClick={this.showSignUpModal.bind(this)} className="Button_new_poll btn">
+            <span className="glyphicon glyphicon-plus" aria-hidden="true" />
+          </a>
+        }
       </div>
     );
   }
