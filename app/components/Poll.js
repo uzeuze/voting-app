@@ -6,11 +6,20 @@ import { browserHistory } from 'react-router';
 import { Button, Grid, Row, Col } from 'react-bootstrap';
 import { Chart } from 'react-google-charts';
 import {
+  ShareButtons,
+  generateShareIcon,
+} from 'react-share';
+import {
   fetchPoll,
   clearPoll,
   fetchFeaturedPoll
 } from '../actions';
-import { API_URL } from '../../config';
+const {
+  TwitterShareButton
+} = ShareButtons;
+
+const TwitterIcon = generateShareIcon('twitter');
+import { API_URL, URL } from '../../config';
 
 class Poll extends Component {
   constructor() {
@@ -147,6 +156,20 @@ class Poll extends Component {
               {this.state.error && <div className="error">{this.state.error}</div>}
               <Button className="Poll__button btn btn-danger" type="submit">VOTE</Button>
             </form>
+            { !this.props.featured ?
+              <TwitterShareButton
+                url={`${URL}/polls/${this.props.poll.slug}`}
+                title={this.props.poll.question}
+                className="twitter_share_button"
+              >
+                <TwitterIcon
+                  size={40}
+                  round
+                />
+              </TwitterShareButton>
+              :
+              null
+            }
           </Col>
           { !this.props.featured ?
             <div className="container">
