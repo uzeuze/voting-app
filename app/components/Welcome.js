@@ -13,22 +13,24 @@ class Welcome extends Component {
   renderWelcomeHero() {
     if (!this.props.authenticated) {
       return (
-        <div className="Welcome__hero_overlay">
-          <div className="Welcome_hero_main_info text-center">
-            <h1 className="Welcome__hero_title">FREE & INSTANT POLLS</h1>
-            <p className="Welcome__hero_subtitle">
-              Create and publish online polls quickly and easily.
-            </p>
-            <Button
-              onClick={this.showSignUpModal.bind(this)}
-              className="Welcome__hero_button"
-            >
-              GET STARTED
-            </Button>
-          </div>
-          <div className="Welcome__featured_poll_container">
-            <h4 className="text-center Welcome__featured_poll_title">Featured Poll</h4>
-            <div className="Welcome__featured_poll">
+        <div className="Welcome__hero">
+          <div className="Welcome__hero_overlay">
+            <div className="Welcome_hero_main_info text-center">
+              <h1 className="Welcome__hero_title">FREE & INSTANT POLLS</h1>
+              <p className="Welcome__hero_subtitle">
+                Create and publish online polls quickly and easily.
+              </p>
+              <Button
+                onClick={this.showSignUpModal.bind(this)}
+                className="Welcome__hero_button"
+              >
+                GET STARTED
+              </Button>
+            </div>
+            <div className="Welcome__featured_poll_container">
+              <h4 className="text-center Welcome__featured_poll_title">Featured Poll</h4>
+              <div className="Welcome__featured_poll">
+              </div>
             </div>
           </div>
         </div>
@@ -41,7 +43,7 @@ class Welcome extends Component {
   render() {
     return (
       <div className="Welcome">
-        <div className="Welcome__hero">
+        <div>
           {this.renderWelcomeHero()}
         </div>
         <div className="text-center">

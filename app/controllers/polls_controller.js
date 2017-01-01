@@ -6,7 +6,7 @@ exports.getPolls = (req, res) => {
     if (polls && polls.length) {
       res.json(polls);
     } else {
-      res.status(404).send('Invalid Request');
+      res.json({ error: 'No polls' });
     }
   });
 };

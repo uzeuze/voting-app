@@ -11,7 +11,10 @@ class PollList extends Component {
   render() {
     if (!this.props.polls) {
       return <div>Loading...</div>;
+    } else if (this.props.polls.length <= 0) {
+      return <div>No polls to display</div>;
     }
+    
     const polls = this.props.polls.map(poll => {
       return (
         <li key={poll._id} className="PollList__list_item well">

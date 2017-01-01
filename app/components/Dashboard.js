@@ -40,6 +40,7 @@ class Dashboard extends Component {
       return (
         <div>
           <h3>You don't have any poll</h3>
+          <Link to='/new-poll' className="btn btn-success">Create Your First Poll</Link>
         </div>
       );
     }

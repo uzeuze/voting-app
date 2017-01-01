@@ -92,9 +92,15 @@ export function fetchAllPolls() {
   return function (dispatch) {
     axios.get(`${API_URL}/polls`)
       .then(response => {
+        let polls;
+        if (response.data.error) {
+          polls = [];
+        } else {
+          polls = response.data;
+        }
         dispatch({
           type: FETCH_ALL_POLLS,
-          payload: response.data
+          payload: polls
         });
       });
   };
