@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "./node_modules/.bin/webpack",
     "start": "node server",
-    "postinstall": "webpack -p",
+    "postinstall": "./node_modules/.bin/webpack -p",
     "test": "NODE_ENV=test ./node_modules/.bin/nodemon --exec 'mocha --recursive -R min'"
   },
   "author": "Egemen Can Uze",
