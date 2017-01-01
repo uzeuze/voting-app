@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { showAuthModal } from '../actions';
 import PollList from './PollList';
