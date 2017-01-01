@@ -9,6 +9,7 @@ import {
   AUTH_MODAL,
   HIDE_AUTH_MODAL,
   FETCH_ALL_POLLS,
+  FETCH_USER_POLLS,
   FETCH_POLL,
   CLEAR_POLL
 } from './types';
@@ -96,5 +97,20 @@ export function fetchAllPolls() {
           payload: response.data
         });
       });
+  };
+}
+
+export function fetchUserPolls() {
+  return function (dispatch) {
+    axios.get(`${API_URL}/user/polls`,
+      {
+        headers: { authorization: localStorage.getItem('token') }
+      }
+    ).then(response => {
+      dispatch({
+        type: FETCH_USER_POLLS,
+        payload: response.data
+      });
+    });
   };
 }

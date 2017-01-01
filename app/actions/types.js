@@ -6,5 +6,6 @@ export const CLEAR_AUTH_ERROR = 'CLEAR_AUTH_ERROR';
 export const AUTH_MODAL = 'AUTH_MODAL';
 export const HIDE_AUTH_MODAL = 'HIDE_AUTH_MODAL';
 export const FETCH_ALL_POLLS = 'FETCH_ALL_POLLS';
+export const FETCH_USER_POLLS = 'FETCH_USER_POLLS';
 export const FETCH_POLL = 'FETCH_POLL';
 export const CLEAR_POLL = 'CLEAR_POLL';
