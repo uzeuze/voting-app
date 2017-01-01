@@ -106,12 +106,14 @@ class Poll extends Component {
         <div>
           <h2 className="text-center">Thank you for voting!</h2>
           <h5 className="text-center">{this.props.poll.question}</h5>
-          <Chart
-            chartType="PieChart"
-            data={pollData}
-            options={{ 'is3D': true }}
-            width="100%"
-          />
+          <div className="container">
+            <Chart
+              chartType="PieChart"
+              data={pollData}
+              options={{ 'is3D': true }}
+              width="100%"
+            />
+          </div>
         </div>
       );
     }
@@ -142,19 +144,22 @@ class Poll extends Component {
                 {this.renderAddOption()}
               </div>
               {this.state.error && <div className="error">{this.state.error}</div>}
-              <Button className="Poll__button" type="submit">VOTE</Button>
+              <Button className="Poll__button btn btn-danger" type="submit">VOTE</Button>
             </form>
           </Col>
           { !this.props.featured ?
-            <Col sm={6}>
-              <Chart
-                chartType="PieChart"
-                data={pollData}
-                options={{ 'is3D': true }}
-                width="100%"
-                legend_toggle
-              />
-            </Col>
+            <div className="container">
+              <Col sm={6}>
+                <Chart
+                  chartType="PieChart"
+                  data={pollData}
+                  options={{ 'is3D': true }}
+                  width="100%"
+                  legend_toggle
+                />
+              </Col>
+            </div>
+
             :
             null
           }
