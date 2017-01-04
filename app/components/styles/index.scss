@@ -4,6 +4,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.navbar li.active a{
+  background-color: transparent !important;
+}
+
 .error {
   color: red;
 }

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import {
+  Navbar,
+  Nav,
+  NavItem,
+} from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { showAuthModal } from '../actions';
 
 import AuthModal from './AuthModal';
@@ -23,45 +29,42 @@ class Header extends Component {
   renderNavLinks() {
     if (this.props.authenticated) {
       return (
-        <ul className="nav navbar-nav navbar-right">
-          <li><Link to="/">Polls</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/signout">Sign Out</Link></li>
-        </ul>
+        <Nav pullRight>
+          <LinkContainer to="/">
+            <NavItem eventKey={1}>Polls</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/dashboard">
+            <NavItem eventKey={2}>Dashboard</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/signout">
+            <NavItem eventKey={3}>Sign Out</NavItem>
+          </LinkContainer>
+        </Nav>
       );
     }
 
     return (
-      <ul className="nav navbar-nav navbar-right">
-        <li><a onClick={this.showSignUpModal}>Sign Up</a></li>
-        <li><a onClick={this.showLoginModal}>Login</a></li>
-      </ul>
+      <Nav pullRight>
+        <NavItem eventKey={1} onClick={this.showSignUpModal}>Sign Up</NavItem>
+        <NavItem eventKey={2} onClick={this.showLoginModal}>Login</NavItem>
+      </Nav>
     );
   }
 
   render() {
     return (
       <div>
-        <nav className="Header navbar">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <button
-                type="button"
-                className="navbar-toggle"
-                data-toggle="collapse"
-                data-target="#mainNavbar"
-              >
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-              </button>
+        <Navbar className="Header">
+          <Navbar.Header>
+            <Navbar.Brand>
               <Link to="/" className="navbar-brand">VOTING APP</Link>
-            </div>
-            <div className="collapse navbar-collapse" id="mainNavbar">
-              {this.renderNavLinks()}
-            </div>
-          </div>
-        </nav>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            {this.renderNavLinks()}
+          </Navbar.Collapse>
+        </Navbar>
 
         <AuthModal />
       </div>
